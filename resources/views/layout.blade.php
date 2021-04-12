@@ -19,7 +19,7 @@
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
             <div class="container">
 
-                <a class="navbar-brand" href="#">The Golf Site</a>
+                <a class="navbar-brand" href="/">The Golf Site</a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
