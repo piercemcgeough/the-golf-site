@@ -43,11 +43,45 @@
     </header>
 
     <main class="container mt-5">
-        <div class="bg-light p-5 rounded">
-            <h1>Welcome to The Golf Site</h1>
-            <p class="lead">We have a large number of clubs with a larger number of members</p>
-            <a class="btn btn-lg btn-primary" href="/clubs" role="button">View {{ $clubs }} clubs</a>
-            <a class="btn btn-lg btn-primary" href="/members" role="button">View {{ $members }} members</a>
+        
+        <div class="d-flex justify-content-end">
+            <a href="{{ route('members.create') }}" class="btn btn-primary">Add Member</a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                        <th>Club</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse($members as $member)
+                        <tr>
+                            <td>{{ $member->id }}</td>
+                            <td>
+                                <a href="/members/{{ $member->id }}">
+                                    {{ $member->name }}
+                                </a>
+                            </td>
+                            <td>{{ ucfirst($member->gender) }}</td>
+                            <td>
+                                {{ \Carbon\Carbon::parse($member->dob)->diff(\Carbon\Carbon::now())->format('%y') }}
+                            </td>
+                            <td>
+                                <a href="{{ route('clubs.show', $member->club->id) }}">
+                                    {{ $member->club->name }}
+                                </a>
+                            </td>
+                        </tr>
+                    @empty
+                    @endforelse
+                </tbody>
+            </table>
         </div>
     </main>
 
